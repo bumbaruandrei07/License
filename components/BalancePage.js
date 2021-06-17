@@ -14,7 +14,7 @@ export const TransactionType = {
 export default function BalancePage(props) {
   let { setDisplayedPage } = props;
   const [checked, setChecked] = useState(TransactionType.Venit);
-  const [transactionValue, onChangeTransactionValue] = useState(null);
+  const [transactionValue, onChangeTransactionValue] = useState("");
   const [transactions, setTransactions] = useState([]);
 
   console.log(checked);
