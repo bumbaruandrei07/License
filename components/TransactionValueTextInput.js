@@ -3,11 +3,12 @@ import { SafeAreaView, StyleSheet, TextInput } from "react-native";
 
 const TransactionValueTextInput = (props) => {
   const { transactionValue, onChangeTransactionValue } = props;
-
+  const onlyDigits = (text) => text.replace(/[^.\d]/g, "");
   const checkNumber = (text) => {
     console.log(text);
+
+    return onlyDigits(text);
   };
-  const onlyDigits = (text) => text.replace(/[^\d]/g, "");
 
   return (
     <SafeAreaView>
@@ -16,8 +17,9 @@ const TransactionValueTextInput = (props) => {
         onChangeText={(text) => onChangeTransactionValue(text)}
         value={transactionValue}
         placeholder="transaction value"
-        //   keyboardType="numeric"
+        keyboardType="numeric"
         // validate:
+
         onSubmitEditing={checkNumber}
       />
     </SafeAreaView>
