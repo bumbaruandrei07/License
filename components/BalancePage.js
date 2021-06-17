@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import TransactionValueTextInput from "./TransactionValueTextInput";
 import AddTransactionButton from "./AddTransactionButton";
 import BalanceText from "./BalanceText";
-
+import Transaction from "../model/Transaction";
 export const TransactionType = {
   Venit: "Venit",
   Cheltuiala: "Cheltuiala",
@@ -23,13 +23,14 @@ export default function BalancePage(props) {
   const computeBalance = () => transactions.reduce(reducer, 0);
 
   const onPressAddButton = () => {
-    const transaction = {
-      value:
-        checked === TransactionType.Venit
-          ? Number(transactionValue)
-          : -Number(transactionValue),
-      timestamp: new Date().getTime(),
-    };
+    const value =
+      checked === TransactionType.Venit
+        ? Number(transactionValue)
+        : -Number(transactionValue);
+    const timestamp = new Date().getTime();
+
+    const transaction = new Transaction(value, timestamp);
+
     setTransactions([...transactions, transaction]);
     console.log("Button Pressed!");
     console.log(transactions);
