@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Button, Text, View } from "react-native";
 import { PageEnum } from "../App";
-import styled from "styled-components";
+//import styled from "styled-components";
 
 const styles = StyleSheet.create({
   container: {

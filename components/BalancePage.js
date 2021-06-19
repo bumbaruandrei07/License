@@ -1,11 +1,13 @@
 import { StyleSheet, Button, Text, View } from "react-native";
 import { PageEnum } from "../App";
 import { RadioButton } from "react-native-paper";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TransactionValueTextInput from "./TransactionValueTextInput";
 import AddTransactionButton from "./AddTransactionButton";
 import BalanceText from "./BalanceText";
 import Transaction from "../model/Transaction";
+import DB from "../database/DB";
+
 export const TransactionType = {
   Venit: "Venit",
   Cheltuiala: "Cheltuiala",
@@ -35,6 +37,18 @@ export default function BalancePage(props) {
     console.log("Button Pressed!");
     console.log(transactions);
   };
+
+  useEffect(
+    () => {
+      let lastTransaction = transactions[transactions.length - 1];
+      if (lastTransaction) {
+        DB.createTransaction(lastTransaction.value, lastTransaction.timestamp);
+      }
+    },
+    //cand se schimba tranzactiile atunci se schimba efectul - alocam immutable
+    // kind of Observer dp
+    [transactions]
+  );
 
   return (
     <View>

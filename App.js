@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 import MainMenuPage from "./components/MainMenuPage";
 import LineChartPage from "./components/LineChartPage";
 import BalancePage from "./components/BalancePage";
-
+import DB from "./database/DB";
 export const PageEnum = {
   MainMenuPage: "MainMenuPage",
   BalancePage: "BalancePage",
@@ -12,6 +12,7 @@ export const PageEnum = {
 };
 
 export default function App() {
+  DB.getInstance()
   let [displayedPage, setDisplayedPage] = useState(PageEnum.MainMenuPage);
   let currentPage;
   switch (displayedPage) {
