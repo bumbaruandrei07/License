@@ -27,9 +27,13 @@ export default function MainMenuPage(props) {
 
   return (
     <View>
-     
       <Text
-        style={{ font: "48px bold Arial",  color: "darkgreen", margin: "12px", padding: "12px", }}
+        style={{
+          font: "48px bold Arial",
+          color: "darkgreen",
+          margin: "12px",
+          padding: "12px",
+        }}
       >
         GestioApp MENIU PRINCIPAL!
       </Text>
@@ -39,13 +43,21 @@ export default function MainMenuPage(props) {
           onPress={() => setDisplayedPage(PageEnum.BalancePage)}
           title="Gestioneaza Sold"
           color="#841584"
-          
         />
       </View>
       <View style={{ margin: "12px", padding: "12px" }}>
         <Button
           onPress={() => setDisplayedPage(PageEnum.LineChartPage)}
           title="Afiseaza Line Chart"
+          color="#841584"
+        />
+      </View>
+
+      <View style={{ margin: "12px", padding: "12px" }}>
+        <Button
+          Button
+          onPress={() => setDisplayedPage(PageEnum.MessagesPage)}
+          title="Gestio Notes"
           color="#841584"
         />
       </View>

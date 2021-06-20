@@ -5,14 +5,16 @@ import MainMenuPage from "./components/MainMenuPage";
 import LineChartPage from "./components/LineChartPage";
 import BalancePage from "./components/BalancePage";
 import DB from "./database/DB";
+import MessagesPage from "./components/MessagesPage";
 export const PageEnum = {
   MainMenuPage: "MainMenuPage",
   BalancePage: "BalancePage",
   LineChartPage: "LineChartPage",
+  MessagesPage: "MessagesPage",
 };
 
 export default function App() {
-  DB.getInstance()
+  DB.getInstance();
   let [displayedPage, setDisplayedPage] = useState(PageEnum.MainMenuPage);
   let currentPage;
   switch (displayedPage) {
@@ -29,6 +31,9 @@ export default function App() {
       break;
     case PageEnum.LineChartPage:
       currentPage = <LineChartPage setDisplayedPage={setDisplayedPage} />;
+      break;
+    case PageEnum.MessagesPage:
+      currentPage = <MessagesPage setDisplayedPage={setDisplayedPage} />;
       break;
     default:
       throw Error("Page not declared in switch");

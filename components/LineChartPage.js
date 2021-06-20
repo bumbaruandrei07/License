@@ -7,6 +7,7 @@ export default function LineChartPage(props) {
   const [transactions, setTransactions] = useState([]);
   useEffect(() => {
     async function fetchTransactions() {
+      //preluarea datelor din db, db ===state
       let dbTrans = await DB.findTransactions();
       setTransactions(dbTrans);
     }
