@@ -1,4 +1,5 @@
 import React from "react";
+import { PageEnum } from "../App";
 import {
   StyleSheet,
   Button,
@@ -6,10 +7,10 @@ import {
   View,
   FlatList,
   SafeAreaView,
-  StatusBar
+  StatusBar,
 } from "react-native";
 
-const DATA = [
+const ExampleData = [
   {
     id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
     title: "First Item",
@@ -48,13 +49,28 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function MessagesPage() {
+
+
+
+
+
+
+
+export default function MessagesPage(props) {
+  const { setDisplayedPage } = props;
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
-        data={DATA}
+        data={ExampleData}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
+      />
+
+      <Button onPress={() => {}} title="Add Message" color="#841584" />
+      <Button
+        onPress={() => setDisplayedPage(PageEnum.MainMenuPage)}
+        title="Back"
+        color="#841584"
       />
     </SafeAreaView>
   );
