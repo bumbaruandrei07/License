@@ -1,5 +1,4 @@
 import * as SQLite from "expo-sqlite";
-import { userInfo } from "os";
 import Sequelize from "rn-sequelize";
 const Op = Sequelize.Op;
 const Model = Sequelize.Model;

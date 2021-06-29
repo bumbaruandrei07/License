@@ -7,7 +7,7 @@ export default function LineChartPage(props) {
   const [transactions, setTransactions] = useState([]);
   useEffect(() => {
     async function fetchTransactions() {
-      //preluarea datelor din db, db ===state
+    
       let dbTrans = await DB.findTransactions();
       setTransactions(dbTrans);
     }
@@ -17,7 +17,7 @@ export default function LineChartPage(props) {
   let { setDisplayedPage } = props;
   return (
     <View>
-      <Text>Aceasta va fi pagina de LineChart</Text>
+      <Text>Aceasta este pagina de LineChart</Text>
       <LineChartContainer transactions={transactions} />
       <Button
         onPress={() => setDisplayedPage("MainMenuPage")}
