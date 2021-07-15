@@ -49,7 +49,7 @@ export default function NotesPage(props) {
 
   const addNote = (note) => {
     if (note.text === "") {
-      Alert.alert("Alert Title", "My Alert Msg");
+      Alert.alert("Atentie!", "Textul trebuie sa contina cel putin un caracter!");
 
       return;
     }

@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import {
-    StyleSheet,
-    Button,
-    Text,
-    View,
-    Modal,
-    Pressable,
-    TextInput
-  } from 'react-native'
+  StyleSheet,
+  Button,
+  Text,
+  View,
+  Modal,
+  Pressable,
+  TextInput,
+  Alert,
+} from "react-native";
 
 const styles = StyleSheet.create({
   centeredView: {
@@ -18,7 +19,7 @@ const styles = StyleSheet.create({
   },
   modalView: {
     margin: 20,
-    backgroundColor: "white",
+    backgroundColor: "green",
     borderRadius: 20,
     padding: 35,
     alignItems: "center",
@@ -72,7 +73,7 @@ export default function AddMessageModal(props) {
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
+          //  Alert.alert("Modal has been closed.");
           setModalVisible(false);
         }}
       >
@@ -90,7 +91,7 @@ export default function AddMessageModal(props) {
               style={[styles.button, styles.buttonClose]}
               onPress={() => setModalVisible(!modalVisible)}
             >
-              <Text style={styles.textStyle}>Hide Modal</Text>
+              <Text style={styles.textStyle}>Anuleaza</Text>
             </Pressable>
 
             <Pressable
