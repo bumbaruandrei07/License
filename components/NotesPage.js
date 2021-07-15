@@ -11,6 +11,7 @@ import {
   Modal,
   Pressable,
 } from "react-native";
+import AddMessageModal from "./AddMessageModal";
 
 const ExampleData = [
   {
@@ -27,15 +28,7 @@ const ExampleData = [
   },
 ];
 
-const Item = ({ title }) => (
-  <View style={stylesMessage.item}>
-    <Text style={stylesMessage.title}>{title}</Text>
-  </View>
-);
-
-const renderItem = ({ item }) => <Item title={item.title} />;
-
-const stylesMessage = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: StatusBar.currentHeight || 0,
@@ -51,56 +44,28 @@ const stylesMessage = StyleSheet.create({
   },
 });
 
-export default function MessagesPage(props) {
+const Item = ({ title }) => (
+  <View style={styles.item}>
+    <Text style={styles.title}>{title}</Text>
+  </View>
+);
+
+const renderItem = ({ item }) => <Item title={item.title} />;
+
+export default function NotesPage(props) {
   const { setDisplayedPage } = props;
   const [modalVisible, setModalVisible] = useState(false);
+  const [notes, setNotes] = useState([]);
 
-  const styles = StyleSheet.create({
-    centeredView: {
-      flex: 1,
-      justifyContent: "center",
-      alignItems: "center",
-      marginTop: 22,
-    },
-    modalView: {
-      margin: 20,
-      backgroundColor: "white",
-      borderRadius: 20,
-      padding: 35,
-      alignItems: "center",
-      shadowColor: "#000",
-      shadowOffset: {
-        width: 0,
-        height: 2,
-      },
-      shadowOpacity: 0.25,
-      shadowRadius: 4,
-      elevation: 5,
-    },
-    button: {
-      borderRadius: 20,
-      padding: 10,
-      elevation: 2,
-    },
-    buttonOpen: {
-      backgroundColor: "#F194FF",
-    },
-    buttonClose: {
-      backgroundColor: "#2196F3",
-    },
-    textStyle: {
-      color: "white",
-      fontWeight: "bold",
-      textAlign: "center",
-    },
-    modalText: {
-      marginBottom: 15,
-      textAlign: "center",
-    },
-  });
+  const addNote = (note) => setNotes([...notes, note]);
+  console.log("notes");
+  console.log(notes);
+
+  console.log("modalVisible: ");
+  console.log(modalVisible);
 
   return (
-    <SafeAreaView style={stylesMessage.container}>
+    <SafeAreaView style={styles.container}>
       <FlatList
         data={ExampleData}
         renderItem={renderItem}
@@ -118,29 +83,11 @@ export default function MessagesPage(props) {
         color="#841584"
       />
 
-      {/* <View style={styles.centeredView}> */}
-        <Modal
-          animationType="slide"
-          transparent={true}
-          visible={modalVisible}
-          onRequestClose={() => {
-            Alert.alert("Modal has been closed.");
-            setModalVisible(!modalVisible);
-          }}
-        >
-          <View style={styles.centeredView}>
-            <View style={styles.modalView}>
-              <Text style={styles.modalText}>Hello World!</Text>
-              <Pressable
-                style={[styles.button, styles.buttonClose]}
-                onPress={() => setModalVisible(!modalVisible)}
-              >
-                <Text style={styles.textStyle}>Hide Modal</Text>
-              </Pressable>
-            </View>
-          </View>
-        </Modal>
-      {/* </View> */}
+      <AddMessageModal
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
+        addNote={addNote}
+      />
     </SafeAreaView>
   );
 }
