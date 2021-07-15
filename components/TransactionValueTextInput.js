@@ -3,7 +3,10 @@ import { SafeAreaView, StyleSheet, TextInput } from "react-native";
 
 const TransactionValueTextInput = (props) => {
   const { transactionValue, onChangeTransactionValue } = props;
-  const onlyDigits = (text) => text.replace(/[^.\d]/g, "");
+  const onlyDigits = (text) => {
+  //  return text.replace(/[^.\d]/g, "");
+  };
+
   const checkNumber = (text) => {
     console.log(text);
 

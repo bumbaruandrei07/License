@@ -24,20 +24,27 @@ export default function MainMenuPage(props) {
   // let setDisplayedPage = props.setDisplayedPage
   // ========================= La fel cu cel de mai jos ================
   let { displayedPage, setDisplayedPage } = props;
-
+  const styles = StyleSheet.create({
+    view: { margin: 12, padding: 12 },
+    text: {
+      fontSize: 48,
+      fontWeight: 'bold',
+     // fontFamily:  'Arial',
+    // fontFamily : 'Times New Roman',
+      color: 'darkgreen',
+      margin: 12,
+      padding: 12
+    }
+  })
+  
   return (
     <View>
       <Text
-        style={{
-          font: "48px bold Arial",
-          color: "darkgreen",
-          margin: "12px",
-          padding: "12px",
-        }}
+        style={styles.text}
       >
         GestioApp MENIU PRINCIPAL!
       </Text>
-      <View style={{ margin: "12px", padding: "12px" }}>
+      <View style={styles.view}>
         <Button
           Button
           onPress={() => setDisplayedPage(PageEnum.BalancePage)}
@@ -45,7 +52,7 @@ export default function MainMenuPage(props) {
           color="#841584"
         />
       </View>
-      <View style={{ margin: "12px", padding: "12px" }}>
+      <View style={styles.view}>
         <Button
           onPress={() => setDisplayedPage(PageEnum.LineChartPage)}
           title="Afiseaza Line Chart"
@@ -53,7 +60,7 @@ export default function MainMenuPage(props) {
         />
       </View>
 
-      <View style={{ margin: "12px", padding: "12px" }}>
+      <View style={styles.view}>
         <Button
           Button
           onPress={() => setDisplayedPage(PageEnum.MessagesPage)}
