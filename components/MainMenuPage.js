@@ -28,22 +28,18 @@ export default function MainMenuPage(props) {
     view: { margin: 12, padding: 12 },
     text: {
       fontSize: 48,
-      fontWeight: 'bold',
-     // fontFamily:  'Arial',
-    // fontFamily : 'Times New Roman',
-      color: 'darkgreen',
+      fontWeight: "bold",
+      // fontFamily:  'Arial',
+
+      color: "darkgreen",
       margin: 12,
-      padding: 12
-    }
-  })
-  
+      padding: 12,
+    },
+  });
+
   return (
     <View>
-      <Text
-        style={styles.text}
-      >
-        GestioApp MENIU PRINCIPAL!
-      </Text>
+      <Text style={styles.text}>GestioApp MENIU PRINCIPAL!</Text>
       <View style={styles.view}>
         <Button
           Button
@@ -63,7 +59,7 @@ export default function MainMenuPage(props) {
       <View style={styles.view}>
         <Button
           Button
-          onPress={() => setDisplayedPage(PageEnum.MessagesPage)}
+          onPress={() => setDisplayedPage(PageEnum.NotesPage)}
           title="Gestio Notes"
           color="#841584"
         />

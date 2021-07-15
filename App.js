@@ -5,12 +5,12 @@ import MainMenuPage from "./components/MainMenuPage";
 import LineChartPage from "./components/LineChartPage";
 import BalancePage from "./components/BalancePage";
 import DB from "./database/DB";
-import MessagesPage from "./components/MessagesPage";
+import NotesPage from "./components/NotesPage";
 export const PageEnum = {
   MainMenuPage: "MainMenuPage",
   BalancePage: "BalancePage",
   LineChartPage: "LineChartPage",
-  MessagesPage: "MessagesPage",
+  NotesPage: "NotesPage",
 };
 
 export default function App() {
@@ -32,8 +32,8 @@ export default function App() {
     case PageEnum.LineChartPage:
       currentPage = <LineChartPage setDisplayedPage={setDisplayedPage} />;
       break;
-    case PageEnum.MessagesPage:
-      currentPage = <MessagesPage setDisplayedPage={setDisplayedPage} />;
+    case PageEnum.NotesPage:
+      currentPage = <NotesPage setDisplayedPage={setDisplayedPage} />;
       break;
     default:
       throw Error("Page not declared in switch");
