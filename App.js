@@ -40,7 +40,7 @@ export default function App() {
   }
   return (
     <View style={styles.container}>
-      {currentPage}
+      <View>{currentPage}</View>
 
       <StatusBar style="auto" />
     </View>

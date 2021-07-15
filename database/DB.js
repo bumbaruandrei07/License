@@ -79,8 +79,8 @@ class DB {
   }
 }
 
-Window.query = function (str) {
-  return sequelize.query(str);
-};
-Window.sequelize = sequelize;
-export default new DB();
+// Window.query = function (str) {
+//   return sequelize.query(str);
+// };
+// Window.sequelize = sequelize;
+ export default new DB();
