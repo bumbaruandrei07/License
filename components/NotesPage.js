@@ -10,8 +10,10 @@ import {
   StatusBar,
   Modal,
   Pressable,
+  Alert,
 } from "react-native";
 import AddMessageModal from "./AddMessageModal";
+import NoteItem from "./NoteItem";
 
 const ExampleData = [
   {
@@ -28,46 +30,49 @@ const ExampleData = [
   },
 ];
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
-  },
-  item: {
-    backgroundColor: "#f9c2ff",
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
-  },
-  title: {
-    fontSize: 32,
-  },
-});
+const renderItem = ({ item }) => <NoteItem title={item.title} />;
 
-const Item = ({ title }) => (
-  <View style={styles.item}>
-    <Text style={styles.title}>{title}</Text>
-  </View>
-);
-
-const renderItem = ({ item }) => <Item title={item.title} />;
+/**
+ * @param  {{id: String, text: String}} note
+ */
+function adaptNoteToListItem(note) {
+  return {
+    id: note.id,
+    title: note.text,
+  };
+}
 
 export default function NotesPage(props) {
   const { setDisplayedPage } = props;
   const [modalVisible, setModalVisible] = useState(false);
   const [notes, setNotes] = useState([]);
 
-  const addNote = (note) => setNotes([...notes, note]);
+  const addNote = (note) => {
+    if (note.text === "") {
+      Alert.alert("Alert Title", "My Alert Msg");
+
+      return;
+    }
+
+    setNotes([...notes, note]);
+  };
   console.log("notes");
   console.log(notes);
 
   console.log("modalVisible: ");
   console.log(modalVisible);
 
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      marginTop: StatusBar.currentHeight || 0,
+    },
+  });
+
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
-        data={ExampleData}
+        data={notes.map((note) => adaptNoteToListItem(note))}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
       />
