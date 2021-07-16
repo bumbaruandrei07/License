@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { PageEnum } from "../App";
 import {
   StyleSheet,
@@ -14,6 +14,7 @@ import {
 } from "react-native";
 import AddMessageModal from "./AddMessageModal";
 import NoteItem from "./NoteItem";
+import DB from "../database/DB";
 
 const ExampleData = [
   {
@@ -47,9 +48,33 @@ export default function NotesPage(props) {
   const [modalVisible, setModalVisible] = useState(false);
   const [notes, setNotes] = useState([]);
 
+  useEffect(() => {
+    async function processNotes() {
+      let lastNote = notes[notes.length - 1];
+      if (lastNote) {
+        await DB.createNote(lastNote.text);
+      }
+    }
+    processNotes();
+  }, [notes]);
+
+  useEffect(() => {
+    async function processNotes() {
+      //selectam toate notele
+      let dbNotes = await DB.findNotes();
+      //setam starea cu toate notele noi => NOTELE O SA EXISTE DUPA CE IESIM DIN COMPONENTA
+      setNotes(dbNotes);
+    }
+
+    processNotes()
+  }, []);
+
   const addNote = (note) => {
     if (note.text === "") {
-      Alert.alert("Atentie!", "Textul trebuie sa contina cel putin un caracter!");
+      Alert.alert(
+        "Atentie!",
+        "Textul trebuie sa contina cel putin un caracter!"
+      );
 
       return;
     }

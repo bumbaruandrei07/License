@@ -5,6 +5,7 @@ const Model = Sequelize.Model;
 
 class User extends Model {}
 class Transaction extends Model {}
+class Note extends Model {}
 
 const sequelize = new Sequelize({
   dialectModule: SQLite,
@@ -37,6 +38,16 @@ Transaction.init(
   {
     sequelize,
     modelName: "transaction",
+  }
+);
+
+Note.init(
+  {
+    text: Sequelize.STRING,
+  },
+  {
+    sequelize,
+    modelName: "note",
   }
 );
 
@@ -77,10 +88,19 @@ class DB {
     //return await User.findTransactions()
     return await Transaction.findAll();
   }
+
+  async createNote(text) {
+    return await Note.create({ text });
+    //add to user
+  }
+
+  async findNotes() {
+    return await Note.findAll();
+  }
 }
 
-// Window.query = function (str) {
-//   return sequelize.query(str);
-// };
-// Window.sequelize = sequelize;
- export default new DB();
+global.query = function (str) {
+  return sequelize.query(str).then(res => res[0]);
+};
+global.sequelize = sequelize;
+export default new DB();
