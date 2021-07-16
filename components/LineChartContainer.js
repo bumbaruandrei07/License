@@ -63,7 +63,6 @@ const LineChartContainer = props => {
 
   return (
     <View>
-      <Text>Line Chart</Text>
       <LineChart
         data={adaptTransactionsToGraphData(transactions)}
       //  data = {exampleData}

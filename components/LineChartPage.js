@@ -3,6 +3,18 @@ import { StyleSheet, Button, Text, View } from "react-native";
 import DB from "../database/DB";
 import LineChartContainer from "./LineChartContainer";
 
+
+let styles = StyleSheet.create({
+  text:{
+    fontSize: 36,
+    color:"darkred",
+    textAlign:"center",
+    fontWeight: "bold"
+  }
+})
+
+
+
 export default function LineChartPage(props) {
   const [transactions, setTransactions] = useState([]);
   useEffect(() => {
@@ -16,7 +28,7 @@ export default function LineChartPage(props) {
   let { setDisplayedPage } = props;
   return (
     <View>
-      <Text>Aceasta este pagina de LineChart</Text>
+      <Text style ={styles.text}>Grafic GestioApp</Text>
       <LineChartContainer transactions={transactions} />
       <Button
         onPress={() => setDisplayedPage("MainMenuPage")}

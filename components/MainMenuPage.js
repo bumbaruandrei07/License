@@ -27,10 +27,10 @@ export default function MainMenuPage(props) {
   const styles = StyleSheet.create({
     view: { margin: 12, padding: 12 },
     text: {
-      fontSize: 48,
+      fontSize: 40,
       fontWeight: "bold",
       // fontFamily:  'Arial',
-
+      textAlign: "center",
       color: "darkgreen",
       margin: 12,
       padding: 12,
@@ -39,7 +39,7 @@ export default function MainMenuPage(props) {
 
   return (
     <View>
-      <Text style={styles.text}>GestioApp MENIU PRINCIPAL!</Text>
+      <Text style={styles.text}>GestioApp     MENIU PRINCIPAL</Text>
       <View style={styles.view}>
         <Button
           Button

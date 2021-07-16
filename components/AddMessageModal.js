@@ -10,7 +10,17 @@ import {
   Alert,
 } from "react-native";
 
+
+
+
 const styles = StyleSheet.create({
+
+  input:{
+  padding:30,
+  fontSize:20
+  },
+
+
   centeredView: {
     flex: 1,
     justifyContent: "center",
@@ -79,26 +89,26 @@ export default function AddMessageModal(props) {
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>Adaugati o nota noua: </Text>
+            <Text style={styles.modalText}>Adăugați o notă nouă: </Text>
             <TextInput
               style={styles.input}
               onChangeText={(text) => onChangeNote(text)}
               value={note}
-              placeholder="note"
+              placeholder="notiță"
             />
 
             <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() => setModalVisible(!modalVisible)}
             >
-              <Text style={styles.textStyle}>Anuleaza</Text>
+              <Text style={styles.textStyle}>Anulează</Text>
             </Pressable>
 
             <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() => addNote({ text: note, id: uuidv4() })}
             >
-              <Text style={styles.textStyle}>Adauga Nota</Text>
+              <Text style={styles.textStyle}>Adaugă Notă</Text>
             </Pressable>
           </View>
         </View>

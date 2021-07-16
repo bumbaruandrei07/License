@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { PageEnum } from "../App";
 import {
   StyleSheet,
-  Button,
   Text,
   View,
   FlatList,
@@ -15,7 +14,7 @@ import {
 import AddMessageModal from "./AddMessageModal";
 import NoteItem from "./NoteItem";
 import DB from "../database/DB";
-
+import {Input, Button} from 'react-native-elements';
 const ExampleData = [
   {
     id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
@@ -66,7 +65,7 @@ export default function NotesPage(props) {
       setNotes(dbNotes);
     }
 
-    processNotes()
+    processNotes();
   }, []);
 
   const addNote = (note) => {
@@ -92,6 +91,23 @@ export default function NotesPage(props) {
       flex: 1,
       marginTop: StatusBar.currentHeight || 0,
     },
+    button: {
+      margin: 20,
+    },
+    buttonTitle: {
+      fontSize: 24,
+      
+    },
+    backButton: {
+     
+      flexGrow: 2,
+      backgroundColor: "red"
+    },
+
+    flexView: {
+      display: "flex",
+      flexDirection: "row",
+    },
   });
 
   return (
@@ -101,17 +117,22 @@ export default function NotesPage(props) {
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
       />
-
-      <Button
-        onPress={() => setModalVisible(true)}
-        title="Add Message"
-        color="#841584"
-      />
-      <Button
-        onPress={() => setDisplayedPage(PageEnum.MainMenuPage)}
-        title="Back"
-        color="#841584"
-      />
+      <View style={styles.flexView}>
+        <Button
+          titleStyle={styles.buttonTitle}
+          buttonStyle={styles.button}
+          onPress={() => setModalVisible(true)}
+          title="Add Message"
+         
+        />
+        <Button
+          titleStyle={styles.buttonTitle}
+          buttonStyle= {{...styles.button, ...styles.backButton}}
+          onPress={() => setDisplayedPage(PageEnum.MainMenuPage)}
+          title="Back"
+         
+        />
+      </View>
 
       <AddMessageModal
         modalVisible={modalVisible}
