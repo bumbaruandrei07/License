@@ -20,9 +20,9 @@ const exampleData = {
 
 function adaptTransactionsToGraphData(transactions) {
   function getTime(timestamp) {
-    return new Date(timestamp).toGMTString()
-    // let date = new Date(timestamp)
-    // return `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+   // return new Date(timestamp).toGMTString()
+    let date = new Date(timestamp)
+    return `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
   }
 
   const INITIAL_DATA = {
